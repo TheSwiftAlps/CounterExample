@@ -1,17 +1,22 @@
 import ReSwift
 
+protocol CounterAction: Action {
+    var uuid: UUID { get }
+}
+
 // all of the actions that can be applied to the state
-struct CounterActionIncrease: Action {
-    let index: Int
+struct CounterActionIncrease: CounterAction {
+    let uuid: UUID
 }
-struct CounterActionDecrease: Action {
-    let index: Int
-}
-
-struct CounterActionAdd: Action {
-
+struct CounterActionDecrease: CounterAction {
+    let uuid: UUID
 }
 
-struct CounterActionRemove: Action {
-    let index: Int
+struct CounterActionAdd: CounterAction {
+    let name: String
+    let uuid = UUID()
+}
+
+struct CounterActionRemove: CounterAction {
+    let uuid: UUID
 }

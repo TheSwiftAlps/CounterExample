@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fJf-yR-iJv">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fJf-yR-iJv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,28 +26,35 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CounterCell" rowHeight="68" id="nmG-E3-MuA" customClass="CounterCell" customModule="CounterExample" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CounterCell" rowHeight="68" id="nmG-E3-MuA" customClass="CounterCell" customModule="CounterExample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nmG-E3-MuA" id="oKv-oX-TLv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" autorepeat="NO" minimumValue="-100" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="pre-xb-w8s">
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" autorepeat="NO" minimumValue="-100" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="pre-xb-w8s">
                                                     <rect key="frame" x="273" y="19" width="94" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="stepperPressed:" destination="nmG-E3-MuA" eventType="valueChanged" id="TZG-Kz-CkK"/>
                                                     </connections>
                                                 </stepper>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgj-3I-jgW">
-                                                    <rect key="frame" x="8" y="23" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgj-3I-jgW">
+                                                    <rect key="frame" x="8" y="23" width="257" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="leadingMargin" secondItem="rgj-3I-jgW" secondAttribute="leading" id="3Ke-fV-UM5"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="pre-xb-w8s" secondAttribute="trailing" id="Bzw-0y-sVb"/>
+                                                <constraint firstItem="pre-xb-w8s" firstAttribute="top" secondItem="oKv-oX-TLv" secondAttribute="topMargin" constant="11" id="Mes-sz-xbw"/>
+                                                <constraint firstItem="pre-xb-w8s" firstAttribute="leading" secondItem="rgj-3I-jgW" secondAttribute="trailing" constant="8" id="TmN-wh-AP3"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="pre-xb-w8s" secondAttribute="bottom" constant="11.5" id="fge-5w-Vs0"/>
+                                                <constraint firstItem="rgj-3I-jgW" firstAttribute="top" secondItem="oKv-oX-TLv" secondAttribute="topMargin" constant="15" id="h8l-1L-dex"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="rgj-3I-jgW" secondAttribute="bottom" constant="15.5" id="qbU-Lh-vUJ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="label" destination="rgj-3I-jgW" id="PiX-ed-k3x"/>
@@ -71,7 +79,7 @@
                     <navigationItem key="navigationItem" id="O1K-Td-Auc">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Zr1-8g-nfq">
                             <connections>
-                                <action selector="addCounter:" destination="BYZ-38-t0r" id="NEP-JS-fY9"/>
+                                <action selector="showNameInput:" destination="BYZ-38-t0r" id="8Oe-sJ-7Rs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

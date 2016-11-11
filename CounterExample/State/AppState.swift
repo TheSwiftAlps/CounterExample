@@ -1,18 +1,26 @@
 import ReSwift
 
 struct Counter: Equatable {
-    let index: Int
+    let uuid: UUID
+    let name: String
     var value: Int = 0
 
-    init(index: Int) {
-        self.index = index
+    init(uuid: UUID, name: String) {
+        self.name = name
+        self.uuid = uuid
     }
 
     static func ==(lhs: Counter, rhs: Counter) -> Bool {
-        return lhs.index == rhs.index
+        return lhs.uuid == rhs.uuid
     }
 }
 
 struct AppState: StateType {
-    var counters: [Counter] = []
+    var uuids: [UUID] = []
+    var counterIndex: [UUID: Counter] = [:]
+
+    func counter(at index: Int) -> Counter? {
+        let uuid = uuids[index]
+        return counterIndex[uuid]
+    }
 }
