@@ -34,6 +34,10 @@ class ViewController: UIViewController, StoreSubscriber {
         navigationItem.leftBarButtonItems?.first?.isEnabled = state.previous != nil
         navigationItem.leftBarButtonItems?.last?.isEnabled = state.next != nil
         self.counters = state.counters
+        
+        let data = NSKeyedArchiver.archivedData(withRootObject: state)
+        
+        UserDefaults.standard.set(data, forKey: "theData")
     }
 
     @IBAction func addCounter(_ sender: Any) {

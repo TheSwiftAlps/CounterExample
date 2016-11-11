@@ -13,7 +13,14 @@ struct CounterReducer: Reducer {
         var newState: AppState
         
         if state == nil {
-            newState = AppState(counters: [], previous: nil)
+            if
+                let data = UserDefaults.standard.object(forKey: "theData") as? Data,
+                let state = NSKeyedUnarchiver.unarchiveObject(with: data) as? AppState {
+                newState = state
+            }
+            else {
+                newState = AppState(counters: [], previous: nil)
+            }
         }
         else {
             newState = AppState(counters: state!.counters,
