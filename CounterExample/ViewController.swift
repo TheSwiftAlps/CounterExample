@@ -12,10 +12,10 @@ import ReSwift
 class ViewController: UIViewController, StoreSubscriber {
     
     typealias StoreSubscriberStateType = AppState
-    var diffCalculator: TableViewDiffCalculator<Counter>?
-    var counters: [Counter] = [] {
+    var diffCalculator: TableViewDiffCalculator<String>?
+    var names: [String] = [] {
         didSet {
-            self.diffCalculator?.rows = counters
+            self.diffCalculator?.rows = names
         }
     }
 
@@ -26,15 +26,15 @@ class ViewController: UIViewController, StoreSubscriber {
         
         mainStore.subscribe(self)
 
-        self.diffCalculator = TableViewDiffCalculator(tableView: self.tableView, initialRows: self.counters)
+        self.diffCalculator = TableViewDiffCalculator(tableView: self.tableView, initialRows: self.names)
     }
 
     func newState(state: AppState) {
-        self.counters = state.counters
+        self.names = state.names
     }
 
     @IBAction func addCounter(_ sender: Any) {
-        mainStore.dispatch(CounterActionAdd())
+        mainStore.dispatch(CounterActionAdd(name: "defaultName"))
     }
 
 }
@@ -42,19 +42,22 @@ class ViewController: UIViewController, StoreSubscriber {
 extension ViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mainStore.state.counters.count
+        return mainStore.state.names.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CounterCell", for: indexPath) as! CounterCell
-        cell.label.text = "\(mainStore.state.counters[indexPath.row].value)"
+        guard let counter = mainStore.state.counter(at: indexPath.row) else {
+            return cell
+        }
+        cell.label.text = "\(counter.name): \(counter.value)"
         cell.action = { actionType in
             
             switch actionType {
             case .increase:
-                mainStore.dispatch(CounterActionIncrease(index: indexPath.row))
+                mainStore.dispatch(CounterActionIncrease(name: counter.name))
             case .decrease:
-                mainStore.dispatch(CounterActionDecrease(index: indexPath.row))
+                mainStore.dispatch(CounterActionDecrease(name: counter.name))
             }
         }
         
@@ -62,7 +65,8 @@ extension ViewController : UITableViewDataSource {
     }
   
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        mainStore.dispatch(CounterActionRemove(index: indexPath.row))
+        let name = mainStore.state.names[indexPath.row]
+        mainStore.dispatch(CounterActionRemove(name: name))
     }
   
 }

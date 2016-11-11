@@ -1,17 +1,21 @@
 import ReSwift
 
+protocol NamedAction: Action {
+    var name: String { get }
+}
+
 // all of the actions that can be applied to the state
-struct CounterActionIncrease: Action {
-    let index: Int
+struct CounterActionIncrease: NamedAction {
+    let name: String
 }
-struct CounterActionDecrease: Action {
-    let index: Int
-}
-
-struct CounterActionAdd: Action {
-
+struct CounterActionDecrease: NamedAction {
+    let name: String
 }
 
-struct CounterActionRemove: Action {
-    let index: Int
+struct CounterActionAdd: NamedAction {
+    let name: String
+}
+
+struct CounterActionRemove: NamedAction {
+    let name: String
 }
