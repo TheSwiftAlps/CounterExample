@@ -55,5 +55,4 @@ class CounterReducerTests: XCTestCase {
         return reducer.handleAction(action: action, state: appState).counters[0]
     }
 
-
 }

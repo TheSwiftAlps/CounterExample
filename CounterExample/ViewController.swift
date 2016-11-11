@@ -27,9 +27,8 @@ class ViewController: UIViewController, StoreSubscriber {
     
     @IBAction func addCounter(_ sender: Any) {
         mainStore.dispatch(CounterActionAdd())
-
-        tableView.reloadData()
     }
+
 }
 
 extension ViewController : UITableViewDataSource {
