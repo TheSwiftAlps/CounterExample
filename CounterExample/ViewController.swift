@@ -18,8 +18,6 @@ class ViewController: UIViewController, StoreSubscriber {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        automaticallyAdjustsScrollViewInsets = false
-        
         mainStore.subscribe(self)
     }
     
@@ -51,12 +49,12 @@ extension ViewController : UITableViewDataSource {
         cell.label.text = "\(mainStore.state.counters[indexPath.row])"
         cell.action = { actionType in
             
-            if case .increase = actionType {
+            switch actionType {
+            case .increase:
                 mainStore.dispatch(CounterActionIncrease(index: indexPath.row))
-            } else {
+            case .decrease:
                 mainStore.dispatch(CounterActionDecrease(index: indexPath.row))
             }
-            
         }
         
         return cell
