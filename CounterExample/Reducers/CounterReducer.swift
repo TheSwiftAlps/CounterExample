@@ -14,30 +14,31 @@ struct CounterReducer: Reducer {
         // current state is copied, modified and returned as the new state
         var state = state ?? AppState()
 
-        guard let namedAction = action as? NamedAction
+        guard let namedAction = action as? CounterAction
             else { return state }
 
-        var counter = state.counterIndex[namedAction.name] ?? Counter(name: namedAction.name)
-
-        switch action {
-        case is CounterActionIncrease:
-            counter.value += 1
-            state.counterIndex[counter.name] = counter
-        case is CounterActionDecrease:
-            counter.value -= 1
-            state.counterIndex[counter.name] = counter
-        case is CounterActionAdd:
-            state.names.append(counter.name)
-            state.counterIndex[counter.name] = counter
-        case is CounterActionRemove:
-            if let index = state.names.index(of: counter.name) {
-                state.names.remove(at: index)
-                state.counterIndex.removeValue(forKey: counter.name)
+        if let counter = state.counterIndex[namedAction.uuid] {
+            var counter = counter
+            switch action {
+            case is CounterActionIncrease:
+                counter.value += 1
+                state.counterIndex[counter.uuid] = counter
+            case is CounterActionDecrease:
+                counter.value -= 1
+                state.counterIndex[counter.uuid] = counter
+            case is CounterActionRemove:
+                if let index = state.uuids.index(of: counter.uuid) {
+                    state.uuids.remove(at: index)
+                    state.counterIndex.removeValue(forKey: counter.uuid)
+                }
+            default:
+                break
             }
-        default:
-            break
+        } else if let addAction = namedAction as? CounterActionAdd {
+            let counter = Counter(uuid: addAction.uuid, name: addAction.name)
+            state.uuids.append(counter.uuid)
+            state.counterIndex[counter.uuid] = counter
         }
-        
         return state
     }
     

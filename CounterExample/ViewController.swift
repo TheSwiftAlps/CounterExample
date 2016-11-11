@@ -12,10 +12,10 @@ import ReSwift
 class ViewController: UIViewController, StoreSubscriber {
     
     typealias StoreSubscriberStateType = AppState
-    var diffCalculator: TableViewDiffCalculator<String>?
-    var names: [String] = [] {
+    var diffCalculator: TableViewDiffCalculator<UUID>?
+    var uuids: [UUID] = [] {
         didSet {
-            self.diffCalculator?.rows = names
+            self.diffCalculator?.rows = uuids
         }
     }
 
@@ -26,11 +26,11 @@ class ViewController: UIViewController, StoreSubscriber {
         
         mainStore.subscribe(self)
 
-        self.diffCalculator = TableViewDiffCalculator(tableView: self.tableView, initialRows: self.names)
+        self.diffCalculator = TableViewDiffCalculator(tableView: self.tableView, initialRows: self.uuids)
     }
 
     func newState(state: AppState) {
-        self.names = state.names
+        self.uuids = state.uuids
     }
 
     func addCounter(with name: String) {
@@ -55,7 +55,7 @@ class ViewController: UIViewController, StoreSubscriber {
 extension ViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mainStore.state.names.count
+        return mainStore.state.uuids.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,9 +68,9 @@ extension ViewController : UITableViewDataSource {
             
             switch actionType {
             case .increase:
-                mainStore.dispatch(CounterActionIncrease(name: counter.name))
+                mainStore.dispatch(CounterActionIncrease(uuid: counter.uuid))
             case .decrease:
-                mainStore.dispatch(CounterActionDecrease(name: counter.name))
+                mainStore.dispatch(CounterActionDecrease(uuid: counter.uuid))
             }
         }
         
@@ -78,8 +78,8 @@ extension ViewController : UITableViewDataSource {
     }
   
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        let name = mainStore.state.names[indexPath.row]
-        mainStore.dispatch(CounterActionRemove(name: name))
+        let uuid = mainStore.state.uuids[indexPath.row]
+        mainStore.dispatch(CounterActionRemove(uuid: uuid))
     }
   
 }
