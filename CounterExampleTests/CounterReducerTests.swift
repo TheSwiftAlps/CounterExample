@@ -14,39 +14,39 @@ class CounterReducerTests: XCTestCase {
     let reducer = CounterReducer()
     
     func testIncreaseWithInputNilReturnsOne() {
-        XCTAssertEqual(handle(nil, CounterActionIncrease()), 1)
+        XCTAssertEqual(handle(nil, CounterActionIncrease(index: 0)), 1)
     }
     
     func testDecreaseWithInputNilReturnsMinusOne() {
-        XCTAssertEqual(handle(nil, CounterActionDecrease()), -1)
+        XCTAssertEqual(handle(nil, CounterActionDecrease(index: 0)), -1)
     }
     
     func testIncreaseWithZeroReturnsOne() {
-        XCTAssertEqual(handle(0, CounterActionIncrease()), 1)
+        XCTAssertEqual(handle(0, CounterActionIncrease(index: 0)), 1)
     }
     
     func testDecreaseWithZeroReturnsMinusOne() {
-        XCTAssertEqual(handle(0, CounterActionDecrease()), -1)
+        XCTAssertEqual(handle(0, CounterActionDecrease(index: 0)), -1)
     }
     
     func testIncreaseWithPositiveValueReturnsIncrementedByOne() {
-        XCTAssertEqual(handle(5, CounterActionIncrease()), 6)
+        XCTAssertEqual(handle(5, CounterActionIncrease(index: 0)), 6)
     }
     
     func testDecreaseWithPostiveValueReturnsDecrementedByOne() {
-        XCTAssertEqual(handle(8, CounterActionDecrease()), 7)
+        XCTAssertEqual(handle(8, CounterActionDecrease(index: 0)), 7)
     }
     
     func testIncreaseWithNegativeValueReturnsIncrementedByOne() {
-        XCTAssertEqual(handle(-9, CounterActionIncrease()), -8)
+        XCTAssertEqual(handle(-9, CounterActionIncrease(index: 0)), -8)
     }
     
     func testDecreaseWithNegativeValueReturnsDecrementedByOne() {
-        XCTAssertEqual(handle(-4, CounterActionDecrease()), -5)
+        XCTAssertEqual(handle(-4, CounterActionDecrease(index: 0)), -5)
     }
     
     func handle(_ inputValue: Int?, _ action: Action) -> Int {
-        let appState = inputValue.map { AppState(counter: $0) }
-        return reducer.handleAction(action: action, state: appState).counter
+        let appState = AppState(counters: [Counter(inputValue ?? 0)])
+        return reducer.handleAction(action: action, state: appState).counters[0]
     }
 }
