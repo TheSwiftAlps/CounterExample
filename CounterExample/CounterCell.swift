@@ -9,7 +9,12 @@
 import UIKit
 import ReSwift
 
-typealias CellAction = (Bool) -> ()
+enum CellActionType {
+    case increase
+    case decrease
+}
+
+typealias CellAction = (CellActionType) -> ()
 
 class CounterCell: UITableViewCell {
     
@@ -20,9 +25,9 @@ class CounterCell: UITableViewCell {
     
     @IBAction func stepperPressed(_ sender: UIStepper) {
         if sender.value > 0 {
-            self.action?(true)
+            self.action?(.increase)
         } else {
-            self.action?(false)
+            self.action?(.decrease)
         }
         sender.value = 0
     }
