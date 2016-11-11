@@ -9,3 +9,4 @@ env:
   - LANG=en_US.UTF-8
 install:
     - carthage bootstrap --no-use-binaries --platform iOS
+script: xcodebuild test -project CounterExample.xcodeproj -scheme CounterExample -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0'
