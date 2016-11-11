@@ -11,3 +11,7 @@ struct CounterActionDecrease: Action {
 struct CounterActionAdd: Action {
 
 }
+
+struct CounterActionRemove: Action {
+    let index: Int
+}
