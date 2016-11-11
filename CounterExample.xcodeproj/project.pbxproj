@@ -22,6 +22,8 @@
 		3C135C601D547F7700EC9FC9 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C135C5F1D547F7700EC9FC9 /* AppState.swift */; };
 		3C135C651D55C92200EC9FC9 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C135C641D55C92200EC9FC9 /* Actions.swift */; };
 		3C135C671D55C94300EC9FC9 /* CounterReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C135C661D55C94300EC9FC9 /* CounterReducer.swift */; };
+		444A3D071DD60383002DFD83 /* Dwifft+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444A3D051DD60383002DFD83 /* Dwifft+UIKit.swift */; };
+		444A3D081DD60383002DFD83 /* Dwifft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444A3D061DD60383002DFD83 /* Dwifft.swift */; };
 		63DC914B1DD5D41E009A8AB0 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C135C451D53E94C00EC9FC9 /* ReSwift.framework */; };
 		D20FA0FE1DD5D11B0054EA53 /* CounterReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA0FD1DD5D11B0054EA53 /* CounterReducerTests.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +68,8 @@
 		3C135C5F1D547F7700EC9FC9 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = State/AppState.swift; sourceTree = "<group>"; };
 		3C135C641D55C92200EC9FC9 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Actions.swift; path = Actions/Actions.swift; sourceTree = "<group>"; };
 		3C135C661D55C94300EC9FC9 /* CounterReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CounterReducer.swift; path = Reducers/CounterReducer.swift; sourceTree = "<group>"; };
+		444A3D051DD60383002DFD83 /* Dwifft+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dwifft+UIKit.swift"; sourceTree = "<group>"; };
+		444A3D061DD60383002DFD83 /* Dwifft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dwifft.swift; sourceTree = "<group>"; };
 		D20FA0FB1DD5D11A0054EA53 /* CounterExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CounterExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20FA0FD1DD5D11B0054EA53 /* CounterReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterReducerTests.swift; sourceTree = "<group>"; };
 		D20FA0FF1DD5D11B0054EA53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 		3C135C231D53E29400EC9FC9 = {
 			isa = PBXGroup;
 			children = (
+				444A3D031DD60383002DFD83 /* Vendor */,
 				3C135C451D53E94C00EC9FC9 /* ReSwift.framework */,
 				3C135C2E1D53E29400EC9FC9 /* CounterExample */,
 				D20FA0FC1DD5D11B0054EA53 /* CounterExampleTests */,
@@ -149,6 +154,23 @@
 				3C135C661D55C94300EC9FC9 /* CounterReducer.swift */,
 			);
 			name = Reducers;
+			sourceTree = "<group>";
+		};
+		444A3D031DD60383002DFD83 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				444A3D041DD60383002DFD83 /* Dwifft */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		444A3D041DD60383002DFD83 /* Dwifft */ = {
+			isa = PBXGroup;
+			children = (
+				444A3D051DD60383002DFD83 /* Dwifft+UIKit.swift */,
+				444A3D061DD60383002DFD83 /* Dwifft.swift */,
+			);
+			path = Dwifft;
 			sourceTree = "<group>";
 		};
 		D20FA0FC1DD5D11B0054EA53 /* CounterExampleTests */ = {
@@ -272,7 +294,9 @@
 				2D215D231DD5D34A0008C909 /* CounterCell.swift in Sources */,
 				3C135C601D547F7700EC9FC9 /* AppState.swift in Sources */,
 				3C135C671D55C94300EC9FC9 /* CounterReducer.swift in Sources */,
+				444A3D081DD60383002DFD83 /* Dwifft.swift in Sources */,
 				3C135C651D55C92200EC9FC9 /* Actions.swift in Sources */,
+				444A3D071DD60383002DFD83 /* Dwifft+UIKit.swift in Sources */,
 				3C135C321D53E29400EC9FC9 /* ViewController.swift in Sources */,
 				3C135C301D53E29400EC9FC9 /* AppDelegate.swift in Sources */,
 			);
@@ -414,6 +438,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = CounterExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -432,6 +457,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = CounterExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
