@@ -52,4 +52,10 @@ extension ViewController : UITableViewDataSource {
         
         return cell
     }
+  
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        mainStore.dispatch(CounterActionRemove(index: indexPath.row))
+    }
+  
 }
+

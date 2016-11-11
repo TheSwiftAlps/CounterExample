@@ -19,6 +19,8 @@ struct CounterReducer: Reducer {
             state.counters[decreaseAction.index] -= 1
         case is CounterActionAdd:
             state.counters.append(Counter())
+        case let removeAction as CounterActionRemove:
+            state.counters.remove(at: removeAction.index)
         default:
             break
         }

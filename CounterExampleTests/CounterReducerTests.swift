@@ -50,6 +50,21 @@ class CounterReducerTests: XCTestCase {
         XCTAssertEqual(appState.counters.count, 1)
     }
 
+    func testRemoveCounterDecrementsCountersCountByOne() {
+        let appState = reducer.handleAction(action: CounterActionAdd(), state: nil)
+        let stateAfterDelete = reducer.handleAction(action: CounterActionRemove(index: 0), state: appState)
+        XCTAssertEqual(stateAfterDelete.counters.count, 0)
+    }
+    
+    func testRemoveCounterAtSpecificIndexRemovesCorrectCounter() {
+        let oneCounterState = reducer.handleAction(action: CounterActionAdd(), state: nil)
+        let twoCountersState = reducer.handleAction(action: CounterActionAdd(), state: oneCounterState)
+        let incrementedSecondCounterState = reducer.handleAction(action: CounterActionIncrease(index: 1), state: twoCountersState)
+        let stateAfterDelete = reducer.handleAction(action: CounterActionRemove(index: 0), state: incrementedSecondCounterState)
+        
+        XCTAssertEqual(stateAfterDelete.counters[0], 1)
+    }
+    
     func handle(_ inputValue: Int?, _ action: Action) -> Int {
         let appState = AppState(counters: [Counter(inputValue ?? 0)])
         return reducer.handleAction(action: action, state: appState).counters[0]
