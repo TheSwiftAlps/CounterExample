@@ -7,3 +7,7 @@ struct CounterActionIncrease: Action {
 struct CounterActionDecrease: Action {
     let index: Int
 }
+
+struct CounterActionAdd: Action {
+
+}
