@@ -12,19 +12,27 @@ import ReSwift
 class ViewController: UIViewController, StoreSubscriber {
     
     typealias StoreSubscriberStateType = AppState
-    
+    var diffCalculator: TableViewDiffCalculator<Counter>?
+    var filteredCounters: [Counter] = [] {
+        didSet {
+            self.diffCalculator?.rows = filteredCounters
+        }
+    }
+
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mainStore.subscribe(self)
+
+        self.diffCalculator = TableViewDiffCalculator(tableView: self.tableView, initialRows: self.filteredCounters)
     }
-    
+
     func newState(state: AppState) {
-        tableView.reloadData()
+        self.filteredCounters = state.counters
     }
-    
+
     @IBAction func addCounter(_ sender: Any) {
         mainStore.dispatch(CounterActionAdd())
     }
@@ -39,7 +47,7 @@ extension ViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CounterCell", for: indexPath) as! CounterCell
-        cell.label.text = "\(mainStore.state.counters[indexPath.row])"
+        cell.label.text = "\(mainStore.state.counters[indexPath.row].value)"
         cell.action = { actionType in
             
             switch actionType {

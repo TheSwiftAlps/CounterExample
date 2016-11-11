@@ -14,11 +14,15 @@ struct CounterReducer: Reducer {
         
         switch action {
         case let increaseAction as CounterActionIncrease:
-            state.counters[increaseAction.index] += 1
+            var counter = state.counters[increaseAction.index]
+            counter.value += 1
+            state.counters[increaseAction.index] = counter
         case let decreaseAction as CounterActionDecrease:
-            state.counters[decreaseAction.index] -= 1
+            var counter = state.counters[decreaseAction.index]
+            counter.value -= 1
+            state.counters[decreaseAction.index] = counter
         case is CounterActionAdd:
-            state.counters.append(Counter())
+            state.counters.append(Counter(index: state.counters.count))
         case let removeAction as CounterActionRemove:
             state.counters.remove(at: removeAction.index)
         default:
