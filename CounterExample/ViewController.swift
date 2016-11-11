@@ -33,8 +33,21 @@ class ViewController: UIViewController, StoreSubscriber {
         self.names = state.names
     }
 
-    @IBAction func addCounter(_ sender: Any) {
-        mainStore.dispatch(CounterActionAdd(name: "defaultName"))
+    func addCounter(with name: String) {
+        mainStore.dispatch(CounterActionAdd(name: name))
+    }
+
+    @IBAction func showNameInput(_ sender: Any) {
+        let controller = UIAlertController(title: nil, message: "Counter name", preferredStyle: .alert)
+        controller.addTextField(configurationHandler: nil)
+        let action = UIAlertAction(title: "OK", style: .default) { [weak self] action in
+            guard let name = controller.textFields?.first?.text else {
+                return
+            }
+            self?.addCounter(with: name)
+        }
+        controller.addAction(action)
+        present(controller, animated: true, completion: nil)
     }
 
 }

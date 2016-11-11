@@ -17,7 +17,7 @@ struct CounterReducer: Reducer {
         guard let namedAction = action as? NamedAction
             else { return state }
 
-        var counter = state.counterIndex[namedAction.name] ?? Counter(name: "counter \(state.names.count)")
+        var counter = state.counterIndex[namedAction.name] ?? Counter(name: namedAction.name)
 
         switch action {
         case is CounterActionIncrease:

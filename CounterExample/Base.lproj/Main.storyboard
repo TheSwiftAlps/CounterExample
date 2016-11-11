@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CounterCell" rowHeight="68" id="nmG-E3-MuA" customClass="CounterCell" customModule="CounterExample" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CounterCell" rowHeight="68" id="nmG-E3-MuA" customClass="CounterCell" customModule="CounterExample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nmG-E3-MuA" id="oKv-oX-TLv">
@@ -79,7 +79,7 @@
                     <navigationItem key="navigationItem" id="O1K-Td-Auc">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Zr1-8g-nfq">
                             <connections>
-                                <action selector="addCounter:" destination="BYZ-38-t0r" id="NEP-JS-fY9"/>
+                                <action selector="showNameInput:" destination="BYZ-38-t0r" id="8Oe-sJ-7Rs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
