@@ -13,9 +13,9 @@ class ViewController: UIViewController, StoreSubscriber {
     
     typealias StoreSubscriberStateType = AppState
     var diffCalculator: TableViewDiffCalculator<Counter>?
-    var filteredCounters: [Counter] = [] {
+    var counters: [Counter] = [] {
         didSet {
-            self.diffCalculator?.rows = filteredCounters
+            self.diffCalculator?.rows = counters
         }
     }
 
@@ -26,11 +26,11 @@ class ViewController: UIViewController, StoreSubscriber {
         
         mainStore.subscribe(self)
 
-        self.diffCalculator = TableViewDiffCalculator(tableView: self.tableView, initialRows: self.filteredCounters)
+        self.diffCalculator = TableViewDiffCalculator(tableView: self.tableView, initialRows: self.counters)
     }
 
     func newState(state: AppState) {
-        self.filteredCounters = state.counters
+        self.counters = state.counters
     }
 
     @IBAction func addCounter(_ sender: Any) {
