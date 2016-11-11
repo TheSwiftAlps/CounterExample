@@ -26,7 +26,8 @@ class ViewController: UIViewController, StoreSubscriber {
     }
     
     @IBAction func addCounter(_ sender: Any) {
-        mainStore.state.counters.append(Counter())
+        mainStore.dispatch(CounterActionAdd())
+
         tableView.reloadData()
     }
 }

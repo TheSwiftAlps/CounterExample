@@ -44,9 +44,16 @@ class CounterReducerTests: XCTestCase {
     func testDecreaseWithNegativeValueReturnsDecrementedByOne() {
         XCTAssertEqual(handle(-4, CounterActionDecrease(index: 0)), -5)
     }
-    
+
+    func testAddCounterIncrementsCountersByOne() {
+        let appState = reducer.handleAction(action: CounterActionAdd(), state: nil)
+        XCTAssertEqual(appState.counters.count, 1)
+    }
+
     func handle(_ inputValue: Int?, _ action: Action) -> Int {
         let appState = AppState(counters: [Counter(inputValue ?? 0)])
         return reducer.handleAction(action: action, state: appState).counters[0]
     }
+
+
 }
