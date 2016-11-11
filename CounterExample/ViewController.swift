@@ -20,10 +20,16 @@ class ViewController: UIViewController, StoreSubscriber {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         mainStore.subscribe(self)
     }
     
     func newState(state: AppState) {
+        tableView.reloadData()
+    }
+    
+    @IBAction func addCounter(_ sender: Any) {
+        mainStore.state.counters.append(Counter())
         tableView.reloadData()
     }
 }
@@ -44,15 +50,16 @@ extension ViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CounterCell", for: indexPath) as! CounterCell
         cell.label.text = "\(mainStore.state.counters[indexPath.row])"
-        cell.action = { [weak self] didIncrease in
+        cell.action = { actionType in
             let action: ReversableAction
-            if didIncrease {
+            switch actionType {
+            case .increase:
                 action = CounterActionIncrease(index: indexPath.row)
-            } else {
+            case .decrease:
                 action = CounterActionDecrease(index: indexPath.row)
             }
             mainStore.dispatch(action)
-            self?.recorder.record(action.reversed())
+            self.recorder.record(action.reversed())
         }
         
         return cell
