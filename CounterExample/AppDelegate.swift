@@ -12,8 +12,21 @@ import ReSwift
 // The global application store, which is responsible for managing the appliction state.
 let mainStore = Store<AppState>(
     reducer: CounterReducer(),
-    state: nil
+    state: nil,
+    middleware: [loggingMiddleware]
 )
+
+
+let loggingMiddleware: Middleware = { dispatch, getState in
+    return { next in
+        return { action in
+            
+            print(action)
+            
+            return next(action)
+        }
+    }
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
