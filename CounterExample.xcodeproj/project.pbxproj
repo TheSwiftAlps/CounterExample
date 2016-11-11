@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D215D231DD5D34A0008C909 /* CounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D215D221DD5D34A0008C909 /* CounterCell.swift */; };
 		38284A6C1DD2AD070070068C /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C135C451D53E94C00EC9FC9 /* ReSwift.framework */; };
 		38284A6D1DD2AD070070068C /* ReSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C135C451D53E94C00EC9FC9 /* ReSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C135C301D53E29400EC9FC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C135C2F1D53E29400EC9FC9 /* AppDelegate.swift */; };
@@ -21,7 +22,8 @@
 		3C135C601D547F7700EC9FC9 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C135C5F1D547F7700EC9FC9 /* AppState.swift */; };
 		3C135C651D55C92200EC9FC9 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C135C641D55C92200EC9FC9 /* Actions.swift */; };
 		3C135C671D55C94300EC9FC9 /* CounterReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C135C661D55C94300EC9FC9 /* CounterReducer.swift */; };
-		D20FA0FE1DD5D11B0054EA53 /* CounterExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA0FD1DD5D11B0054EA53 /* CounterExampleTests.swift */; };
+		63DC914B1DD5D41E009A8AB0 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C135C451D53E94C00EC9FC9 /* ReSwift.framework */; };
+		D20FA0FE1DD5D11B0054EA53 /* CounterReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA0FD1DD5D11B0054EA53 /* CounterReducerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D215D221DD5D34A0008C909 /* CounterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterCell.swift; sourceTree = "<group>"; };
 		3C135C2C1D53E29400EC9FC9 /* CounterExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CounterExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C135C2F1D53E29400EC9FC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C135C311D53E29400EC9FC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +67,7 @@
 		3C135C641D55C92200EC9FC9 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Actions.swift; path = Actions/Actions.swift; sourceTree = "<group>"; };
 		3C135C661D55C94300EC9FC9 /* CounterReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CounterReducer.swift; path = Reducers/CounterReducer.swift; sourceTree = "<group>"; };
 		D20FA0FB1DD5D11A0054EA53 /* CounterExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CounterExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D20FA0FD1DD5D11B0054EA53 /* CounterExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterExampleTests.swift; sourceTree = "<group>"; };
+		D20FA0FD1DD5D11B0054EA53 /* CounterReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterReducerTests.swift; sourceTree = "<group>"; };
 		D20FA0FF1DD5D11B0054EA53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63DC914B1DD5D41E009A8AB0 /* ReSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +118,7 @@
 				3C135C611D55C90900EC9FC9 /* Actions */,
 				3C135C2F1D53E29400EC9FC9 /* AppDelegate.swift */,
 				3C135C311D53E29400EC9FC9 /* ViewController.swift */,
+				2D215D221DD5D34A0008C909 /* CounterCell.swift */,
 				3C135C331D53E29400EC9FC9 /* Main.storyboard */,
 				3C135C361D53E29400EC9FC9 /* Assets.xcassets */,
 				3C135C381D53E29400EC9FC9 /* LaunchScreen.storyboard */,
@@ -149,7 +154,7 @@
 		D20FA0FC1DD5D11B0054EA53 /* CounterExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				D20FA0FD1DD5D11B0054EA53 /* CounterExampleTests.swift */,
+				D20FA0FD1DD5D11B0054EA53 /* CounterReducerTests.swift */,
 				D20FA0FF1DD5D11B0054EA53 /* Info.plist */,
 			);
 			path = CounterExampleTests;
@@ -206,7 +211,7 @@
 				TargetAttributes = {
 					3C135C2B1D53E29400EC9FC9 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = J66ACQBP6J;
+						DevelopmentTeam = LQ449R4NTB;
 						LastSwiftMigration = 0810;
 					};
 					D20FA0FA1DD5D11A0054EA53 = {
@@ -264,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D215D231DD5D34A0008C909 /* CounterCell.swift in Sources */,
 				3C135C601D547F7700EC9FC9 /* AppState.swift in Sources */,
 				3C135C671D55C94300EC9FC9 /* CounterReducer.swift in Sources */,
 				3C135C651D55C92200EC9FC9 /* Actions.swift in Sources */,
@@ -276,7 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D20FA0FE1DD5D11B0054EA53 /* CounterExampleTests.swift in Sources */,
+				D20FA0FE1DD5D11B0054EA53 /* CounterReducerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,7 +410,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J66ACQBP6J;
+				DEVELOPMENT_TEAM = LQ449R4NTB;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -422,7 +428,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J66ACQBP6J;
+				DEVELOPMENT_TEAM = LQ449R4NTB;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -442,6 +448,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CounterExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Test.CounterExampleTests;
@@ -458,6 +468,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CounterExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Test.CounterExampleTests;
@@ -495,6 +509,7 @@
 				D20FA1031DD5D11B0054EA53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
