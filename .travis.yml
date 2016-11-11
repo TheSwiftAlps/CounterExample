@@ -1,6 +1,6 @@
 language: objective-c
 osx_image: xcode8
-xcode_project: CounterExample.xcodeproject
+xcode_project: CounterExample.xcodeproj
 xcode_scheme: CounterExample
 xcode_sdk: iphonesimulator10.0
 env:
@@ -9,4 +9,3 @@ env:
   - LANG=en_US.UTF-8
 install:
     - carthage bootstrap --no-use-binaries --platform iOS
-#test
