@@ -10,11 +10,14 @@ import UIKit
 import ReSwift
 
 class ViewController: UIViewController, StoreSubscriber {
-    
+    let recorder = Recorder()
     typealias StoreSubscriberStateType = AppState
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBAction func didTwoFingersTap(_ sender: Any) {
+        recorder.replay()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         mainStore.subscribe(self)
@@ -41,13 +44,15 @@ extension ViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CounterCell", for: indexPath) as! CounterCell
         cell.label.text = "\(mainStore.state.counters[indexPath.row])"
-        cell.action = { didIncrease in
+        cell.action = { [weak self] didIncrease in
+            let action: ReversableAction
             if didIncrease {
-                mainStore.dispatch(CounterActionIncrease(index: indexPath.row))
+                action = CounterActionIncrease(index: indexPath.row)
             } else {
-                mainStore.dispatch(CounterActionDecrease(index: indexPath.row))
+                action = CounterActionDecrease(index: indexPath.row)
             }
-            
+            mainStore.dispatch(action)
+            self?.recorder.record(action.reversed())
         }
         
         return cell

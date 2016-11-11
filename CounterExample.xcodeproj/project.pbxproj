@@ -22,6 +22,8 @@
 		3C135C601D547F7700EC9FC9 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C135C5F1D547F7700EC9FC9 /* AppState.swift */; };
 		3C135C651D55C92200EC9FC9 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C135C641D55C92200EC9FC9 /* Actions.swift */; };
 		3C135C671D55C94300EC9FC9 /* CounterReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C135C661D55C94300EC9FC9 /* CounterReducer.swift */; };
+		D20FA0FE1DD5D11B0054EA53 /* CounterExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA0FD1DD5D11B0054EA53 /* CounterExampleTests.swift */; };
+		D20FA1071DD5DF480054EA53 /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA1061DD5DF480054EA53 /* Recorder.swift */; };
 		63DC914B1DD5D41E009A8AB0 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C135C451D53E94C00EC9FC9 /* ReSwift.framework */; };
 		D20FA0FE1DD5D11B0054EA53 /* CounterReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA0FD1DD5D11B0054EA53 /* CounterReducerTests.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +71,7 @@
 		D20FA0FB1DD5D11A0054EA53 /* CounterExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CounterExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20FA0FD1DD5D11B0054EA53 /* CounterReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterReducerTests.swift; sourceTree = "<group>"; };
 		D20FA0FF1DD5D11B0054EA53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D20FA1061DD5DF480054EA53 /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +116,7 @@
 		3C135C2E1D53E29400EC9FC9 /* CounterExample */ = {
 			isa = PBXGroup;
 			children = (
+				D20FA1051DD5DF380054EA53 /* Recorder */,
 				3C135C631D55C91800EC9FC9 /* Reducers */,
 				3C135C621D55C91300EC9FC9 /* State */,
 				3C135C611D55C90900EC9FC9 /* Actions */,
@@ -158,6 +162,14 @@
 				D20FA0FF1DD5D11B0054EA53 /* Info.plist */,
 			);
 			path = CounterExampleTests;
+			sourceTree = "<group>";
+		};
+		D20FA1051DD5DF380054EA53 /* Recorder */ = {
+			isa = PBXGroup;
+			children = (
+				D20FA1061DD5DF480054EA53 /* Recorder.swift */,
+			);
+			name = Recorder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +286,7 @@
 				3C135C671D55C94300EC9FC9 /* CounterReducer.swift in Sources */,
 				3C135C651D55C92200EC9FC9 /* Actions.swift in Sources */,
 				3C135C321D53E29400EC9FC9 /* ViewController.swift in Sources */,
+				D20FA1071DD5DF480054EA53 /* Recorder.swift in Sources */,
 				3C135C301D53E29400EC9FC9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
