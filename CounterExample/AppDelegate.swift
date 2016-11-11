@@ -16,13 +16,18 @@ let mainStore = Store<AppState>(
     middleware: [loggingMiddleware]
 )
 
-
+// http://reswift.github.io/ReSwift/master/getting-started-guide.html#middleware
+// Middleware allows you to intercept an action (potentially modifying it, before sending it on)
+// You can add multiple middleware functions
 let loggingMiddleware: Middleware = { dispatch, getState in
     return { next in
         return { action in
             
+            // All we do in this middleware is log all the actions
             print(action)
             
+            // You need to send the action / dispatch on
+            // In theory this could be void, but then the state won't be instantiated (this is also an action)
             return next(action)
         }
     }
