@@ -58,6 +58,8 @@ extension ViewController : UITableViewDataSource {
             }
         }
         
+        cell.backgroundColor = mainStore.state.backgroundColor(forIndex: indexPath.row)
+        
         return cell
     }
   
