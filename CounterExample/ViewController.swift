@@ -31,13 +31,6 @@ class ViewController: UIViewController, StoreSubscriber {
     }
 }
 
-extension ViewController : UITableViewDelegate {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-}
-
 extension ViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
