@@ -13,6 +13,13 @@ struct Counter: Equatable {
     }
 }
 
-struct AppState: StateType {
+class AppState: StateType {
     var counters: [Counter] = []
+    var previous: AppState? = nil
+    var next: AppState? = nil
+    
+    init(counters: [Counter], previous: AppState?) {
+        self.counters = counters
+        self.previous = previous
+    }
 }

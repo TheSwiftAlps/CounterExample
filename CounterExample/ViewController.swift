@@ -19,6 +19,7 @@ class ViewController: UIViewController, StoreSubscriber {
         }
     }
 
+
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -30,13 +31,22 @@ class ViewController: UIViewController, StoreSubscriber {
     }
 
     func newState(state: AppState) {
+        navigationItem.leftBarButtonItems?.first?.isEnabled = state.previous != nil
+        navigationItem.leftBarButtonItems?.last?.isEnabled = state.next != nil
         self.counters = state.counters
     }
 
     @IBAction func addCounter(_ sender: Any) {
         mainStore.dispatch(CounterActionAdd())
     }
-
+    
+    @IBAction func undo(_ sender: UIBarButtonItem) {
+        mainStore.dispatch(UndoAction())
+    }
+	
+    @IBAction func redo(_ sender: UIBarButtonItem) {
+        mainStore.dispatch(RedoAction())
+    }
 }
 
 extension ViewController : UITableViewDataSource {

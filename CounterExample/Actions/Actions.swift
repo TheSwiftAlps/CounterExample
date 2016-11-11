@@ -12,6 +12,14 @@ struct CounterActionAdd: Action {
 
 }
 
+struct UndoAction: Action {
+    
+}
+
+struct RedoAction: Action {
+    
+}
+
 struct CounterActionRemove: Action {
     let index: Int
 }

@@ -10,26 +10,39 @@ struct CounterReducer: Reducer {
         // if no state has been provided, create the default state
         // otherwise the state is recreated every time, i.e. the
         // current state is copied, modified and returned as the new state
-        var state = state ?? AppState()
+        var newState: AppState
+        
+        if state == nil {
+            newState = AppState(counters: [], previous: nil)
+        }
+        else {
+            newState = AppState(counters: state!.counters,
+                                previous: state!)
+        }
         
         switch action {
         case let increaseAction as CounterActionIncrease:
-            var counter = state.counters[increaseAction.index]
+            var counter = newState.counters[increaseAction.index]
             counter.value += 1
-            state.counters[increaseAction.index] = counter
+            newState.counters[increaseAction.index] = counter
         case let decreaseAction as CounterActionDecrease:
-            var counter = state.counters[decreaseAction.index]
+            var counter = newState.counters[decreaseAction.index]
             counter.value -= 1
-            state.counters[decreaseAction.index] = counter
+            newState.counters[decreaseAction.index] = counter
         case is CounterActionAdd:
-            state.counters.append(Counter(index: state.counters.count))
+            newState.counters.append(Counter(index: newState.counters.count))
         case let removeAction as CounterActionRemove:
-            state.counters.remove(at: removeAction.index)
+            newState.counters.remove(at: removeAction.index)
+        case is UndoAction:
+            newState = state?.previous ?? AppState(counters: [], previous: nil)
+            newState.next = state
+        case is RedoAction:
+            newState = state!.next!
         default:
             break
         }
         
-        return state
+        return newState
     }
     
 }
