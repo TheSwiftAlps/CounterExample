@@ -1,5 +1,7 @@
 #ReSwift Counter Example
 
+[![Build Status](https://travis-ci.org/TheSwiftAlps/CounterExample.svg?branch=master)](https://travis-ci.org/TheSwiftAlps/CounterExample)
+
 An extremely simple example app, built with [ReSwift](https://github.com/ReSwift/ReSwift).
 
 ## Installation
